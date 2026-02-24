@@ -2,6 +2,9 @@ from clients.api_client import APIClient
 from httpx import Response
 from typing import TypedDict
 
+from clients.private_http_builder import get_private_http_client, AuthUserDict
+
+
 class GetCoursesQueryDict(TypedDict):
 
     """
@@ -83,3 +86,6 @@ class CoursesClient(APIClient):
         :return: httpx.Response object
         """
         response = self.delete(f"/api/v1/courses/{course_id}/")
+
+def get_courses_client(user: AuthUserDict) -> CoursesClient:
+    return CoursesClient(client=get_private_http_client(user))

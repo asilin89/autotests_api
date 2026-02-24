@@ -2,6 +2,14 @@ from clients.api_client import APIClient
 from httpx import Response
 from typing import TypedDict # we use TypeDict when want to specify exact key name in dict
 
+from clients.publich_http_builder import get_public_http_client
+
+
+class Token(TypedDict):
+    tokenType: str
+    accessToken: str
+    refreshToken: str
+
 class LoginRequestDict(TypedDict):
 
     """
@@ -10,6 +18,9 @@ class LoginRequestDict(TypedDict):
 
     email: str
     password: str
+
+class LoginResponseDict(TypedDict):
+    token: Token
 
 class RefreshRequestDict(TypedDict):
 
@@ -44,3 +55,15 @@ class AuthenticationClient(APIClient):
         """
 
         return self.post(url="/api/v1/authentication/refresh",json=request)
+
+    def login(self, request: LoginRequestDict) -> LoginResponseDict:
+        response = self.login_api(request)
+        return response.json()
+
+def get_auth_client() -> AuthenticationClient:
+
+    """
+    This function creates authentication client with configured httpx.Client
+    :return: ready to use authentication client
+    """
+    return AuthenticationClient(client=get_public_http_client())
