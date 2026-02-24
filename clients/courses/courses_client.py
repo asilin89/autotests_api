@@ -2,8 +2,23 @@ from clients.api_client import APIClient
 from httpx import Response
 from typing import TypedDict
 
+from clients.files.files_client import File
 from clients.private_http_builder import get_private_http_client, AuthUserDict
+from clients.users.public_users_client import User
 
+
+class Course(TypedDict):
+    """
+    Course structure for getting a course.
+    """
+    id: str
+    title: str
+    maxScore: int
+    minScore: int
+    description: str
+    previewFile: File
+    estimatedTime: str
+    createdByUser: User
 
 class GetCoursesQueryDict(TypedDict):
 
@@ -12,7 +27,7 @@ class GetCoursesQueryDict(TypedDict):
     """
     userId: str
 
-class CreateCourseQueryDict(TypedDict):
+class CreateCourseRequestDict(TypedDict):
 
     """
     Request structure for creating a course.
@@ -24,6 +39,13 @@ class CreateCourseQueryDict(TypedDict):
     estimatedTime: str
     previewFileId: str
     createdByUserId: str
+
+class CreateCourseResponseDist(TypedDict):
+    """
+    Response structure for creating a course.
+    """
+    course: Course
+
 
 class UpdateCourseRequestDict(TypedDict):
 
@@ -86,6 +108,10 @@ class CoursesClient(APIClient):
         :return: httpx.Response object
         """
         response = self.delete(f"/api/v1/courses/{course_id}/")
+
+    def create_course(self, request: CreateCourseRequestDict) -> CreateCourseResponseDist:
+        response = self.create_course_api(request)
+        return response.json()
 
 def get_courses_client(user: AuthUserDict) -> CoursesClient:
     return CoursesClient(client=get_private_http_client(user))
