@@ -3,7 +3,7 @@ from httpx import Response
 from typing import TypedDict
 
 from clients.files.files_client import File
-from clients.private_http_builder import get_private_http_client, AuthUserDict
+from clients.private_http_builder import get_private_http_client, AuthUserSchema
 from clients.users.public_users_client import User
 
 
@@ -113,5 +113,5 @@ class CoursesClient(APIClient):
         response = self.create_course_api(request)
         return response.json()
 
-def get_courses_client(user: AuthUserDict) -> CoursesClient:
+def get_courses_client(user: AuthUserSchema) -> CoursesClient:
     return CoursesClient(client=get_private_http_client(user))

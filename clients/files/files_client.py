@@ -1,34 +1,10 @@
 from clients.api_client import APIClient
 from httpx import Response
 from typing import TypedDict
+from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
 
-from clients.private_http_builder import get_private_http_client, AuthUserDict
+from clients.private_http_builder import get_private_http_client, AuthUserSchema
 
-
-class File(TypedDict):
-    """
-    File structure for file creation
-    """
-    id: str
-    url: str
-    filename: str
-    directory: str
-
-
-class CreateFileRequestDict(TypedDict):
-
-    """
-    Request structure description for file creation
-    """
-    filename: str
-    directory: str
-    upload_file: str
-
-class CreateFileResponseDict(TypedDict):
-    """
-    Response structure for file creation
-    """
-    file: File
 
 class FileClient(APIClient):
 
@@ -44,7 +20,7 @@ class FileClient(APIClient):
         """
         return self.get(f"/api/v1/files/{file_id}")
 
-    def create_file_api(self, request: CreateFileRequestDict) -> Response:
+    def create_file_api(self, request: CreateFileRequestSchema) -> Response:
 
         """
         POST file api by id
@@ -52,8 +28,8 @@ class FileClient(APIClient):
         :return: httpx.Response object
         """
         return self.post(f"/api/v1/files",
-                         data=request,
-                         files={'upload_file': open(request['upload_file'], 'rb')})
+                         data=request.model_dump(by_alias=True, exclude={'upload_file'}), # excludes upload_file field from request
+                         files={'upload_file': open(request.upload_file, 'rb')})
 
     def delete_file_api(self, file_id: str) -> Response:
 
@@ -64,11 +40,11 @@ class FileClient(APIClient):
         """
         return self.delete(f"/api/v1/files/{file_id}")
 
-    def create_file(self, request: CreateFileRequestDict) -> CreateFileResponseDict:
+    def create_file(self, request: CreateFileRequestSchema) -> CreateFileResponseSchema:
         response = self.create_file_api(request)
-        return response.json()
+        return CreateFileResponseSchema.model_validate_json(response.text)
 
-def get_files_client(user: AuthUserDict) -> FileClient:
+def get_files_client(user: AuthUserSchema) -> FileClient:
 
     """
     This function creates FilesClient object with configured http client

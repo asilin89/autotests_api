@@ -3,32 +3,8 @@ from httpx import Response
 from typing import TypedDict # we use TypeDict when want to specify exact key name in dict
 
 from clients.publich_http_builder import get_public_http_client
+from clients.authentication.authentication_schema import LoginRequestSchema, RefreshRequestSchema, LoginResponseSchema
 
-
-class Token(TypedDict):
-    tokenType: str
-    accessToken: str
-    refreshToken: str
-
-class LoginRequestDict(TypedDict):
-
-    """
-    Authentication Request Structure
-    """
-
-    email: str
-    password: str
-
-class LoginResponseDict(TypedDict):
-    token: Token
-
-class RefreshRequestDict(TypedDict):
-
-    """
-    Authentication Refresh Request Structure
-    """
-
-    refreshToken: str
 
 class AuthenticationClient(APIClient):
 
@@ -36,7 +12,7 @@ class AuthenticationClient(APIClient):
     Client for work with authentication (/api/v1/authentication/login)
     """
 
-    def login_api(self, request: LoginRequestDict) -> Response:
+    def login_api(self, request: LoginRequestSchema) -> Response:
 
         """
         This method does user authentication
@@ -44,9 +20,11 @@ class AuthenticationClient(APIClient):
         :return: httpx.Response object
         """
 
-        return self.post(url="/api/v1/authentication/login",json=request)
+        return self.post(
+            url="/api/v1/authentication/login",
+            json=request.model_dump(by_alias=True))
 
-    def refresh_api(self, request: RefreshRequestDict) -> Response:
+    def refresh_api(self, request: RefreshRequestSchema) -> Response:
 
         """
         This method does token authentication refresh
@@ -54,11 +32,16 @@ class AuthenticationClient(APIClient):
         :return: httpx.Response object
         """
 
-        return self.post(url="/api/v1/authentication/refresh",json=request)
+        return self.post(
+            url="/api/v1/authentication/refresh",
+            json=request.model_dump(by_alias=True))
 
-    def login(self, request: LoginRequestDict) -> LoginResponseDict:
+    def login(self, request: LoginRequestSchema) -> LoginResponseSchema:
         response = self.login_api(request)
-        return response.json()
+        #return LoginResponseSchema(**response.json())
+        return LoginResponseSchema.model_validate_json(response.text) # preferred method to use
+
+
 
 def get_auth_client() -> AuthenticationClient:
 

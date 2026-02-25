@@ -2,28 +2,9 @@ from httpx import URL
 from httpx import Response
 from clients.api_client import APIClient
 from typing import TypedDict
-from clients.private_http_builder import get_private_http_client, AuthUserDict
+from clients.private_http_builder import get_private_http_client, AuthUserSchema
+from clients.users.users_schema import UpdateRequestSchema, GetUserResponseSchema
 
-
-class User(TypedDict):
-
-    """
-    User structure description
-    """
-    id: str
-    email: str
-    lastName: str
-    firstName: str
-    middleName: str
-
-class GetUserResponseDict(TypedDict):
-    user: User
-
-class UpdateRequestDict(TypedDict):
-    email: str | None
-    lastName: str | None
-    firstName: str | None
-    middleName: str | None
 
 class PrivateUsersClient(APIClient):
 
@@ -50,7 +31,7 @@ class PrivateUsersClient(APIClient):
 
         return self.get(url=f"/api/v1/users/{user_id}")
 
-    def update_user_api(self, user_id: str, request: UpdateRequestDict) -> Response:
+    def update_user_api(self, user_id: str, request: UpdateRequestSchema) -> Response:
 
         """
         Partially updates the user's information by its ID
@@ -59,7 +40,7 @@ class PrivateUsersClient(APIClient):
         :return: httpx.Response object
         """
 
-        return self.patch(url=f"/api/v1/users/{user_id}", json=request)
+        return self.patch(url=f"/api/v1/users/{user_id}", json=request.model_dump(by_alias=True))
         ...
 
     def delete_user_api(self, user_id: str) -> Response:
@@ -72,11 +53,11 @@ class PrivateUsersClient(APIClient):
 
         return self.delete(url=f"/api/v1/users/{user_id}")
 
-    def get_user(self, user_id: str) -> GetUserResponseDict:
+    def get_user(self, user_id: str) -> GetUserResponseSchema:
         response = self.get_user_api(user_id)
-        return response.json()
+        return GetUserResponseSchema.model_validate_json(response.text)
 
-def get_private_users_client(user: AuthUserDict) -> PrivateUsersClient:
+def get_private_users_client(user: AuthUserSchema) -> PrivateUsersClient:
 
     """
     This function creates PrivateUsersClient object with configured HTTP client

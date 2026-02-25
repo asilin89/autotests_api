@@ -31,7 +31,7 @@ from pydantic.alias_generators import to_camel
 
 # Field - used for aliases
 # ConfigDict - used when need to set alias cases by default
-# omputed_field - used when need to add a field to schema
+# computed_field - used when need to add a field to schema
 # HttpUrl - to validate http str format
 # EmailStr - to validate email str format
 
