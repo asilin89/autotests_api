@@ -2,21 +2,14 @@ from clients.private_http_builder import AuthUserSchema
 from clients.users import public_users_client
 from clients.users.private_users_client import get_private_users_client
 from clients.users.public_users_client import get_public_users_client
-from tools.fakers import get_random_email
+from tools.fakers import fake
 from clients.users.users_schema import CreateUserRequestSchema
 
 # Same script from httpx_get_user.py but with different approach
 
 public_users_client = get_public_users_client()
 
-create_user_request = CreateUserRequestSchema(
-    email= get_random_email(),
-    password= "string",
-    last_name= "string",
-    first_name= "string",
-    middle_name= "string"
-)
-
+create_user_request = CreateUserRequestSchema()
 create_user_response = public_users_client.create_user(create_user_request)
 
 print("Create user data: ", create_user_response)
