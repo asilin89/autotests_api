@@ -18,10 +18,10 @@ class PublicUsersClient(APIClient):
         :return: httpx.Response object
         """
 
-        return self.post("/api/v1/users", json=request)
+        return self.post("/api/v1/users", json=request.model_dump(by_alias=True))
 
     def create_user(self, request: CreateUserRequestSchema) -> CreateUserResponseSchema:
-        response = self.create_user_api(request.model_dump(by_alias=True))
+        response = self.create_user_api(request)
         return CreateUserResponseSchema.model_validate_json(response.text)
 
 def get_public_users_client() -> PublicUsersClient:
