@@ -30,4 +30,4 @@ class RefreshRequestSchema(BaseModel):
     """
     Authentication Refresh Request Structure
     """
-    refresh_token: str = Field(alias="refreshToken", default_factory=fake.sentence())
+    refresh_token: str = Field(alias="refreshToken", default_factory=fake.sentence)
