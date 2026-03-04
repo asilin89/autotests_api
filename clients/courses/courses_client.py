@@ -5,6 +5,7 @@ from typing import TypedDict
 from clients.files.files_client import File
 from clients.private_http_builder import get_private_http_client, AuthUserSchema
 from clients.users.public_users_client import User
+from pydantic import BaseModel
 
 
 class Course(TypedDict):
@@ -27,7 +28,7 @@ class GetCoursesQueryDict(TypedDict):
     """
     userId: str
 
-class CreateCourseRequestDict(TypedDict):
+class CreateCourseRequestSchema(BaseModel):
 
     """
     Request structure for creating a course.
@@ -40,7 +41,7 @@ class CreateCourseRequestDict(TypedDict):
     previewFileId: str
     createdByUserId: str
 
-class CreateCourseResponseDist(TypedDict):
+class CreateCourseResponseSchema(BaseModel):
     """
     Response structure for creating a course.
     """

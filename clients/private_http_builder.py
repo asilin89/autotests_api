@@ -1,13 +1,16 @@
 from httpx import Client
 from typing import TypedDict
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
+from functools import lru_cache
 from clients.authentication.authentication_client import get_auth_client
 from clients.authentication.authentication_schema import LoginRequestSchema
 
 class AuthUserSchema(BaseModel):
+    model_config = ConfigDict(frozen=True)
     email: str
     password: str
 
+@lru_cache(maxsize=None)
 def get_private_http_client(user: AuthUserSchema) -> Client:
 
     """
