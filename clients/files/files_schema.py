@@ -26,3 +26,6 @@ class CreateFileResponseSchema(BaseModel):
     Response structure for file creation
     """
     file: FileSchema
+
+class GetFileResponseSchema(BaseModel):
+    file: FileSchema

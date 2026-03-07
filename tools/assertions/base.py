@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Sized
 
 def assert_status_code(actual: int, expected: int):
     """
@@ -20,3 +20,14 @@ def assert_equal(actual: Any, expected: Any, name: str):
     assert actual == expected, (
         f"Expected {name} to be {actual}, but got {expected}"
     )
+
+
+def assert_length(actual: Sized, expected: Sized, name: str):
+    """
+    Checks that length of the given response is equal to expected
+    :param actual: actual value
+    :param expected: expected value
+    :param name: name of validated object
+    :return:
+    """
+    assert len(actual) == len(expected), f"Expected length: {expected}, but got length: {actual}"

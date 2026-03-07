@@ -2,9 +2,9 @@ from clients.api_client import APIClient
 from httpx import Response
 from typing import TypedDict
 
-from clients.files.files_client import File
+from clients.files.files_client import FileClient
 from clients.private_http_builder import get_private_http_client, AuthUserSchema
-from clients.users.public_users_client import User
+from clients.users.public_users_client import PublicUsersClient
 from pydantic import BaseModel
 
 
@@ -21,7 +21,7 @@ class Course(TypedDict):
     estimatedTime: str
     createdByUser: User
 
-class GetCoursesQueryDict(TypedDict):
+class GetCoursesQuerySchema(BaseModel):
 
     """
     Request structure for getting all courses.
@@ -64,7 +64,7 @@ class CoursesClient(APIClient):
     """
     Client for getting all courses.
     """
-    def get_courses_api(self, query: GetCoursesQueryDict) -> Response:
+    def get_courses_api(self, query: GetCoursesSchema) -> Response:
 
         """
         GET /api/v1/courses/
@@ -110,7 +110,7 @@ class CoursesClient(APIClient):
         """
         response = self.delete(f"/api/v1/courses/{course_id}/")
 
-    def create_course(self, request: CreateCourseRequestDict) -> CreateCourseResponseDist:
+    def create_course(self, request: CreateCourseRequestSchema) -> CreateCourseResponseSchema:
         response = self.create_course_api(request)
         return response.json()
 
