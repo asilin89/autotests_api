@@ -40,10 +40,10 @@ class Fake:
         return self.faker.random_int(start, end)
 
     def max_score(self) -> int:
-        return self.faker.integer_number(50, 100)
+        return self.integer_number(50, 100)
 
     def min_score(self) -> int:
-        return self.faker.integer_number(1, 49)
+        return self.integer_number(1, 49)
 
 fake = Fake(faker=Faker())
 #fake_ru = Faker(faker=Faker("ru_RU")) # All data will be generated in Russian

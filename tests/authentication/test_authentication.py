@@ -21,7 +21,7 @@ class TestAuthentication:
             password=function_user.password
         )
 
-        response = get_auth_client.login_api(request)
+        response = authentication_client.login_api(request)
         response_data = LoginResponseSchema.model_validate_json(response.text)
 
         assert_status_code(response.status_code, HTTPStatus.OK)

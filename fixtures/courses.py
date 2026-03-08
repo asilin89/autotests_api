@@ -8,7 +8,7 @@ from fixtures.users import UserFixture
 
 class CourseFixture(BaseModel):
     request: CreateCourseRequestSchema # here must be schema
-    response: CreateCourseRequestSchema # here must be schema
+    response: CreateCourseResponseSchema # here must be schema
 
 
 @pytest.fixture
@@ -22,7 +22,10 @@ def function_course(
         function_user: UserFixture,
         function_file: FileFixture,
 ) -> CourseFixture:
-    request = CreateCourseRequestSchema() # here must be schema
+    request = CreateCourseRequestSchema(
+        previewFileId=function_file.response.file.id,
+        createdByUserId=function_user.response.user.id
+    ) # here must be schema
     response = courses_client.create_course(request)
     return CourseFixture(request=request, response=response)
 
