@@ -4,15 +4,28 @@ from clients.users.users_schema import CreateUserRequestSchema, CreateUserRespon
 from http import HTTPStatus
 
 from fixtures.users import UserFixture
+from tools.allure.epics import AllureEpics
+from tools.allure.features import AllureFeature
+from tools.allure.stories import AllureStory
+from tools.allure.tags import AllureTag
 from tools.assertions.schema import validate_json_schema
 from tools.assertions.base import assert_status_code
 from tools.assertions.users import assert_create_user_response
 import pytest
+import allure
+from allure_commons.types import Severity
 
 
 @pytest.mark.users
 @pytest.mark.regression
+@allure.tag(AllureTag.USERS, AllureTag.REGRESSION)
+@allure.epic(AllureEpics.LMS)
+@allure.feature(AllureFeature.USERS)
 class TestUsers:
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.title("Create User")
+    @allure.severity(Severity.BLOCKER)
     def test_create_user(self, public_users_client: PublicUsersClient):
         request = CreateUserRequestSchema()
         response = public_users_client.create_user_api(request=request)
@@ -23,7 +36,10 @@ class TestUsers:
 
         validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
 
-
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.story(AllureStory.GET_ENTITY)
+    @allure.title("Get User Me")
+    @allure.severity(Severity.CRITICAL)
     def test_get_user_me(
             self,
             function_user: UserFixture,
