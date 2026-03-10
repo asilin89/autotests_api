@@ -10,7 +10,7 @@ from tools.allure.stories import AllureStory
 from tools.allure.tags import AllureTag
 from tools.assertions.schema import validate_json_schema
 from tools.assertions.base import assert_status_code
-from tools.assertions.users import assert_create_user_response
+from tools.assertions.users import assert_create_user_response, assert_get_user_response
 import pytest
 import allure
 from allure_commons.types import Severity
@@ -49,6 +49,6 @@ class TestUsers:
         response_data = GetUserResponseSchema.model_validate_json(response.text)
 
         assert_status_code(response.status_code, HTTPStatus.OK)
-        #assert_get_response(response_data, function_user.response)
+        assert_get_user_response(response_data, function_user.response)
 
         validate_json_schema(response.json(), response_data.model_json_schema())

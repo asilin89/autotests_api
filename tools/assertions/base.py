@@ -1,5 +1,8 @@
 from typing import Any, Sized
+import allure
 
+
+@allure.step("Assert that response status code is equal {expected}")
 def assert_status_code(actual: int, expected: int):
     """
     Checks if the given response status code is equal to expected
@@ -9,6 +12,8 @@ def assert_status_code(actual: int, expected: int):
     """
     assert actual == expected, f"Expected status code {expected}, but got status code {actual}"
 
+
+@allure.step("Assert that {name} equals to {expected}")
 def assert_equal(actual: Any, expected: Any, name: str):
     """
     Checks if the given response is equal to expected
@@ -21,6 +26,19 @@ def assert_equal(actual: Any, expected: Any, name: str):
         f"Expected {name} to be {actual}, but got {expected}"
     )
 
+@allure.step("Assert that {name} is true")
+def assert_is_true(actual: Any, name: str):
+    """
+    Checks if the given response is true
+    :param actual: actual value
+    :param name: Validated object name
+    :return:
+    """
+    assert actual, (
+        f"Incorrect value: {name}"
+        f"Expected true value but got: {actual}"
+    )
+
 
 def assert_length(actual: Sized, expected: Sized, name: str):
     """
@@ -30,4 +48,5 @@ def assert_length(actual: Sized, expected: Sized, name: str):
     :param name: name of validated object
     :return:
     """
-    assert len(actual) == len(expected), f"Expected length: {expected}, but got length: {actual}"
+    with allure.step("Check that length of {name} equals to {len(expected)}"):
+        assert len(actual) == len(expected), f"Expected length: {expected}, but got length: {actual}"

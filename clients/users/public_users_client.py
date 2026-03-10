@@ -3,6 +3,7 @@ from httpx import Response
 from typing import TypedDict
 from clients.publich_http_builder import get_public_http_client
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+import allure
 
 
 class PublicUsersClient(APIClient):
@@ -10,6 +11,7 @@ class PublicUsersClient(APIClient):
     """
     Client to work with /api/v1/users endpoint.
     """
+    @allure.step("Create new user")
     def create_user_api(self, request: CreateUserRequestSchema) -> Response:
 
         """

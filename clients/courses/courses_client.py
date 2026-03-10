@@ -2,13 +2,15 @@ from clients.api_client import APIClient
 from httpx import Response
 from typing import TypedDict
 
-from clients.courses.courses_schema import GetCourseQuerySchema, CreateCourseRequestSchema, CreateCourseResponseSchema
+from clients.courses.courses_schema import GetCourseQuerySchema, CreateCourseRequestSchema, CreateCourseResponseSchema, \
+    UpdateCourseRequestSchema
 from clients.files.files_client import FileClient
 from clients.private_http_builder import get_private_http_client, AuthUserSchema
 from clients.users.public_users_client import PublicUsersClient
 from pydantic import BaseModel, Field, ConfigDict
 
 from tools.fakers import fake
+import allure
 
 
 # class CourseSchema(BaseModel):
@@ -72,6 +74,7 @@ class CoursesClient(APIClient):
     """
     Client for getting all courses.
     """
+    @allure.step("Get all courses")
     def get_courses_api(self, query: GetCourseQuerySchema) -> Response:
 
         """
@@ -81,6 +84,7 @@ class CoursesClient(APIClient):
         """
         return self.get(f"/api/v1/courses/", params=query.model_dump(by_alias=True))
 
+    @allure.step("Get course by id {course_id}")
     def get_course_api(self, course_id: str) -> Response:
 
         """
@@ -90,6 +94,7 @@ class CoursesClient(APIClient):
         """
         return self.get(f"/api/v1/courses/{course_id}/")
 
+    @allure.step("Create new course")
     def create_course_api(self, request: CreateCourseRequestSchema) -> Response:
 
         """
@@ -99,7 +104,9 @@ class CoursesClient(APIClient):
         """
         return self.post(f"/api/v1/courses/", json=request.model_dump(by_alias=True))
 
-    def update_course_api(self, course_id: str, request) -> Response:
+
+    @allure.step("Update course by id {course_id}")
+    def update_course_api(self, course_id: str, request: UpdateCourseRequestSchema) -> Response:
 
         """
         PUT /api/v1/courses/{course_id}/- update a course
@@ -107,8 +114,10 @@ class CoursesClient(APIClient):
         :param request: required params to patch a course
         :return: httpx.Response object
         """
-        return self.patch(f"/api/v1/courses/{course_id}/", json=request)
+        return self.patch(f"/api/v1/courses/{course_id}/", json=request.model_dump(by_alias=True))
 
+
+    @allure.step("Delete course by id {course_id}")
     def delete_course_api(self, course_id: str) -> Response:
 
         """

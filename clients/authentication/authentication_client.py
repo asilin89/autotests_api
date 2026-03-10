@@ -4,6 +4,7 @@ from typing import TypedDict # we use TypeDict when want to specify exact key na
 
 from clients.publich_http_builder import get_public_http_client
 from clients.authentication.authentication_schema import LoginRequestSchema, RefreshRequestSchema, LoginResponseSchema
+import allure
 
 
 class AuthenticationClient(APIClient):
@@ -12,6 +13,7 @@ class AuthenticationClient(APIClient):
     Client for work with authentication (/api/v1/authentication/login)
     """
 
+    @allure.step("Authenticate user")
     def login_api(self, request: LoginRequestSchema) -> Response:
 
         """
@@ -24,6 +26,7 @@ class AuthenticationClient(APIClient):
             url="/api/v1/authentication/login",
             json=request.model_dump(by_alias=True))
 
+    @allure.step("Refresh authentication token")
     def refresh_api(self, request: RefreshRequestSchema) -> Response:
 
         """

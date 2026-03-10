@@ -4,6 +4,8 @@ from pydantic import BaseModel, ConfigDict
 from functools import lru_cache
 from clients.authentication.authentication_client import get_auth_client
 from clients.authentication.authentication_schema import LoginRequestSchema
+from clients.event_hooks import curl_event_hook
+
 
 class AuthUserSchema(BaseModel):
     model_config = ConfigDict(frozen=True)
@@ -27,5 +29,6 @@ def get_private_http_client(user: AuthUserSchema) -> Client:
         timeout=100,
         base_url="http://127.0.0.1:8000",
         headers={"Authorization": f"Bearer {login_response.token.access_token}"},
-        follow_redirects=True
+        #follow_redirects=True,
+        event_hooks={"request": [curl_event_hook]}
     )

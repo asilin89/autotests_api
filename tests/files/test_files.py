@@ -75,6 +75,10 @@ class TestFiles:
     @allure.tag(AllureTag.VALIDATE_ENTITY)
     @allure.story(AllureStory.VALIDATE_ENTITY)
     @allure.severity(Severity.NORMAL)
+    @pytest.mark.xfail(
+        strict=True,
+        reason="BUG: server returns 'filename' instead of 'directory' in validation error location"
+    )
     def test_create_file_with_empty_directory(self, files_client: FileClient):
         request = CreateFileRequestSchema(
             filename="",

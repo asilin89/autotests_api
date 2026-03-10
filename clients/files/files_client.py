@@ -4,6 +4,7 @@ from typing import TypedDict
 from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema
 
 from clients.private_http_builder import get_private_http_client, AuthUserSchema
+import allure
 
 
 class FileClient(APIClient):
@@ -11,6 +12,7 @@ class FileClient(APIClient):
     """
     Client for /api/v1/files endpoint
     """
+    @allure.step("Get file by file id {file_id}")
     def get_file_api(self, file_id: str) -> Response:
 
         """
@@ -20,6 +22,7 @@ class FileClient(APIClient):
         """
         return self.get(f"/api/v1/files/{file_id}")
 
+    @allure.step("Create file")
     def create_file_api(self, request: CreateFileRequestSchema) -> Response:
 
         """
@@ -31,6 +34,8 @@ class FileClient(APIClient):
                          data=request.model_dump(by_alias=True, exclude={'upload_file'}), # excludes upload_file field from request
                          files={'upload_file': open(request.upload_file, 'rb')})
 
+
+    @allure.step("Delete file by id {file_id}")
     def delete_file_api(self, file_id: str) -> Response:
 
         """
