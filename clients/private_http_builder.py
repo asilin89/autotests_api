@@ -5,6 +5,7 @@ from functools import lru_cache
 from clients.authentication.authentication_client import get_auth_client
 from clients.authentication.authentication_schema import LoginRequestSchema
 from clients.event_hooks import curl_event_hook
+from config import settings
 
 
 class AuthUserSchema(BaseModel):
@@ -26,9 +27,9 @@ def get_private_http_client(user: AuthUserSchema) -> Client:
     login_response = authentication_client.login(login_request)
 
     return Client(
-        timeout=100,
-        base_url="http://127.0.0.1:8000",
+        timeout=settings.http_client.timeout,
+        base_url=settings.http_client.client_url,
         headers={"Authorization": f"Bearer {login_response.token.access_token}"},
-        #follow_redirects=True,
+        follow_redirects=True,
         event_hooks={"request": [curl_event_hook]}
     )
