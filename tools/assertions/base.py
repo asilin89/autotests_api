@@ -1,5 +1,8 @@
 from typing import Any, Sized
 import allure
+from tools.logger import get_logger
+
+logger = get_logger("BASE_ASSERTIONS")
 
 
 @allure.step("Assert that response status code is equal {expected}")
@@ -10,6 +13,7 @@ def assert_status_code(actual: int, expected: int):
     :param expected: expected status code
     :return:
     """
+    logger.info(f"Assert that response status code is equal to '{expected}'")
     assert actual == expected, f"Expected status code {expected}, but got status code {actual}"
 
 
@@ -22,6 +26,7 @@ def assert_equal(actual: Any, expected: Any, name: str):
     :param name: asserted name (id, first_name, last_name etc.)
     :raises AssertionError: if actual != expected:
     """
+    logger.info(f"Assert that '{name}' equals to '{expected}'")
     assert actual == expected, (
         f"Expected {name} to be {actual}, but got {expected}"
     )
@@ -34,6 +39,7 @@ def assert_is_true(actual: Any, name: str):
     :param name: Validated object name
     :return:
     """
+    logger.info(f"Assert that '{name}' is true")
     assert actual, (
         f"Incorrect value: {name}"
         f"Expected true value but got: {actual}"
@@ -49,4 +55,5 @@ def assert_length(actual: Sized, expected: Sized, name: str):
     :return:
     """
     with allure.step("Check that length of {name} equals to {len(expected)}"):
+        logger.info(f"Assert that '{name}' length is equal to {len(expected)}")
         assert len(actual) == len(expected), f"Expected length: {expected}, but got length: {actual}"

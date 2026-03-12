@@ -6,6 +6,9 @@ from tools.assertions.base import assert_equal
 from tools.assertions.errors import assert_validation_error_response, assert_internal_error_response
 import allure
 from config import settings
+from tools.logger import get_logger
+
+logger = get_logger("FILES_ASSERTIONS")
 
 
 @allure.step("Assert create file response")
@@ -16,6 +19,7 @@ def assert_file_create_response(request: CreateFileRequestSchema, response: Crea
     :param response: API response with file details
     :raises AssertionError: if at least one field is missing or does not match
     """
+    logger.info("Assert create file response")
 
     #expected_url = f"{settings.http_client.client_url}static/{request.directory}/{request.filename}"
     expected_url = f"http://localhost:8000/static/{request.directory}/{request.filename}"
@@ -33,6 +37,7 @@ def assert_file(actual: FileSchema, expected: FileSchema):
     :param expected: expected file data
     :raises AssertionError: if at least one field is missing or does not match:
     """
+    logger.info("Assert file")
     assert_equal(actual.id, expected.id, "id")
     assert_equal(actual.url, expected.url, "url")
     assert_equal(actual.filename, expected.filename, "filename")
@@ -50,6 +55,7 @@ def assert_get_file_response(
     :param create_file_response:
     :return:
     """
+    logger.info("Assert get file response")
     assert_file(get_file_response.file, create_file_response.file)
 
 
@@ -66,6 +72,7 @@ def assert_create_file_with_empty_filename_response(actual: ValidationErrorRespo
             )
         ]
     )
+    logger.info("Assert create file with empty filename response")
     assert_validation_error_response(actual, expected)
 
 
@@ -82,6 +89,7 @@ def assert_create_file_with_empty_directory_response(actual: ValidationErrorResp
             )
         ]
     )
+    logger.info("Assert create file with empty directory response")
     assert_validation_error_response(actual, expected)
 
 
@@ -92,6 +100,7 @@ def assert_file_not_found_response(actual: InternalErrorResponseSchema):
     :param actual: actual response
     :raises: AssertionError
     """
+    logger.info("Assert file not found response")
     expected = InternalErrorResponseSchema(details= "File not found")
     assert_internal_error_response(actual, expected)
 
