@@ -18,8 +18,18 @@ def curl_event_hook(request: Request):
 
 
 def log_request_event_hook(request: Request):
+    """
+    Logging HTTP request information
+    :param request: HTTPX request object
+    :return:
+    """
     logger.info(f"Make {request.method} request to {request.url}")
 
 
 def log_response_event_hook(response: Response):
+    """
+    Logging HTTP response information
+    :param response: HTTPX response object
+    :return:
+    """
     logger.info(f"Got response {response.status_code} {response.reason_phrase} from {response.url}")
