@@ -6,6 +6,8 @@ from clients.publich_http_builder import get_public_http_client
 from clients.authentication.authentication_schema import LoginRequestSchema, RefreshRequestSchema, LoginResponseSchema
 import allure
 
+from tools.routes import APIRoutes
+
 
 class AuthenticationClient(APIClient):
 
@@ -22,8 +24,11 @@ class AuthenticationClient(APIClient):
         :return: httpx.Response object
         """
 
+        # return self.post(
+        #     url="/api/v1/authentication/login",
+        #     json=request.model_dump(by_alias=True))
         return self.post(
-            url="/api/v1/authentication/login",
+            url=f"{APIRoutes.AUTHENTICATION}/login",
             json=request.model_dump(by_alias=True))
 
     @allure.step("Refresh authentication token")
@@ -35,8 +40,11 @@ class AuthenticationClient(APIClient):
         :return: httpx.Response object
         """
 
+        # return self.post(
+        #     url="/api/v1/authentication/refresh",
+        #     json=request.model_dump(by_alias=True))
         return self.post(
-            url="/api/v1/authentication/refresh",
+            url=f"{APIRoutes.AUTHENTICATION}/refresh",
             json=request.model_dump(by_alias=True))
 
     def login(self, request: LoginRequestSchema) -> LoginResponseSchema:

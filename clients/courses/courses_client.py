@@ -12,6 +12,8 @@ from pydantic import BaseModel, Field, ConfigDict
 from tools.fakers import fake
 import allure
 
+from tools.routes import APIRoutes
+
 
 # class CourseSchema(BaseModel):
 #     """
@@ -82,7 +84,8 @@ class CoursesClient(APIClient):
         :param query: course id
         :return: httpx.Response object
         """
-        return self.get(f"/api/v1/courses/", params=query.model_dump(by_alias=True))
+        #return self.get(f"/api/v1/courses/", params=query.model_dump(by_alias=True))
+        return self.get(f"{APIRoutes.COURSES}/", params=query.model_dump(by_alias=True))
 
     @allure.step("Get course by id {course_id}")
     def get_course_api(self, course_id: str) -> Response:
@@ -92,7 +95,8 @@ class CoursesClient(APIClient):
         :param course_id: query param
         :return: httpx.Response object
         """
-        return self.get(f"/api/v1/courses/{course_id}/")
+        #return self.get(f"/api/v1/courses/{course_id}/")
+        return self.get(f"{APIRoutes.COURSES}/{course_id}/")
 
     @allure.step("Create new course")
     def create_course_api(self, request: CreateCourseRequestSchema) -> Response:
@@ -102,7 +106,8 @@ class CoursesClient(APIClient):
         :param request: required params to create a course
         :return: httpx.Response object
         """
-        return self.post(f"/api/v1/courses/", json=request.model_dump(by_alias=True))
+        #return self.post(f"/api/v1/courses/", json=request.model_dump(by_alias=True))
+        return self.post(f"{APIRoutes.COURSES}/", json=request.model_dump(by_alias=True))
 
 
     @allure.step("Update course by id {course_id}")
@@ -114,7 +119,8 @@ class CoursesClient(APIClient):
         :param request: required params to patch a course
         :return: httpx.Response object
         """
-        return self.patch(f"/api/v1/courses/{course_id}/", json=request.model_dump(by_alias=True))
+        #return self.patch(f"/api/v1/courses/{course_id}/", json=request.model_dump(by_alias=True))
+        return self.patch(f"{APIRoutes.COURSES}/{course_id}/", json=request.model_dump(by_alias=True))
 
 
     @allure.step("Delete course by id {course_id}")
@@ -125,7 +131,8 @@ class CoursesClient(APIClient):
         :param course_id:
         :return: httpx.Response object
         """
-        response = self.delete(f"/api/v1/courses/{course_id}/")
+        #response = self.delete(f"/api/v1/courses/{course_id}/")
+        response = self.delete(f"{APIRoutes.COURSES}/{course_id}/")
 
     def create_course(self, request: CreateCourseRequestSchema) -> CreateCourseResponseSchema:
         response = self.create_course_api(request)
