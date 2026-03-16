@@ -38,7 +38,7 @@ def private_users_client(function_user: UserFixture) -> PrivateUsersClient:
 
 
 @pytest.fixture
-def function_user(public_users_client) -> UserFixture: # function here highlights scope (i.e. @pytest.fixture(scope = function)
+def function_user(public_users_client: PublicUsersClient) -> UserFixture: # function here highlights scope (i.e. @pytest.fixture(scope = function)
     request = CreateUserRequestSchema()                # if you need this to run at module scope = module_user
     response = public_users_client.create_user(request)     # done this way since fixture scope cannot be set dynamically
     return UserFixture(request=request ,response=response)
