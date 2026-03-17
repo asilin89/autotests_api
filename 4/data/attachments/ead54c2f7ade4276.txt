@@ -1,0 +1,16 @@
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 422 Unprocessable Entity from http://127.0.0.1:8000/api/v1/files
+INFO     BASE_ASSERTIONS:base.py:16 Assert that response status code is equal to '422'
+INFO     FILES_ASSERTIONS:files.py:92 Assert create file with empty directory response
+INFO     ERRORS_ASSERTIONS:errors.py:36 Assert validation error response
+INFO     BASE_ASSERTIONS:base.py:58 Assert that 'details' length is equal to 1
+INFO     ERRORS_ASSERTIONS:errors.py:17 Assert validation error
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'type' equals to 'string_too_short'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'input' equals to ''
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'context' equals to '{'min_length': 1}'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'message' equals to 'String should have at least 1 character'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'location' equals to '['body', 'directory']'

@@ -1,0 +1,22 @@
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/courses/
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 307 Temporary Redirect from http://127.0.0.1:8000/api/v1/courses/
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:26 Make PATCH request to http://127.0.0.1:8000/api/v1/courses/dbc9c930-27ce-4b10-b62c-85507f3b970b/
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 307 Temporary Redirect from http://127.0.0.1:8000/api/v1/courses/dbc9c930-27ce-4b10-b62c-85507f3b970b/
+INFO     HTTP_LOGGER:event_hooks.py:26 Make PATCH request to http://127.0.0.1:8000/api/v1/courses/dbc9c930-27ce-4b10-b62c-85507f3b970b
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/courses/dbc9c930-27ce-4b10-b62c-85507f3b970b
+INFO     BASE_ASSERTIONS:base.py:16 Assert that response status code is equal to '200'
+INFO     COURSES_ASSERTIONS:courses.py:23 Assert update course response
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'title' equals to 'Tell least statement occur weight party team.'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'max_score' equals to '69'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'min_score' equals to '1'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'description' equals to 'Behind detail change budget month send agree. Character magazine stock specific sea quite want. Environment if if something cut million both north.'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'estimated_time' equals to '10'
+INFO     SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

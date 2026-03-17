@@ -1,0 +1,15 @@
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:26 Make GET request to http://127.0.0.1:8000/api/v1/users/me
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/users/me
+INFO     BASE_ASSERTIONS:base.py:16 Assert that response status code is equal to '200'
+INFO     USERS_ASSERTIONS:users.py:52 Assert get user response
+INFO     USERS_ASSERTIONS:users.py:33 Assert user
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'id' equals to '93c3acce-2aa9-4eb9-b784-b3a19d3ceb26'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'email' equals to 'rcruz@example.org'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'last_name' equals to 'Nelson'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'first_name' equals to 'Julie'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'middle_name' equals to 'Matthew'
+INFO     SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

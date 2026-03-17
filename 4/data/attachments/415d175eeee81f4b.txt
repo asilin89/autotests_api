@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://127.0.0.1:8000/api/v1/courses/' \
+ -H 'host: 127.0.0.1:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTAzLTE3VDA5OjIyOjU2LjYzOTM5MyIsInVzZXJfaWQiOiJiZjA5NDJhYi1iNjZlLTQ2M2EtYTQyZS1hYTMzZGExMTBhN2QifQ.Yo2cs-CIY81W9ObG2G04A9EhguKguzgKPkpkP6ySP7E' \
+ -H 'content-length: 374' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Arrive similar reveal tend know contain floor.","maxScore":95,"minScore":24,"description":"Society same support goal its teacher better. Mind foreign movement American court table perhaps. Small form bag marriage production place.","estimatedTime":"3","previewFileId":"f3e43585-0bfb-406d-85c7-c27e04b17eb9","createdByUserId":"bf0942ab-b66e-463a-a42e-aa33da110a7d"}'
