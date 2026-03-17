@@ -43,6 +43,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run API tests with pytest and generate allure results
+        env:
+          HTTP_CLIENT.URL: "http://127.0.0.1:8000"
+          HTTP_CLIENT.TIMEOUT: 100
+          TEST_DATA.IMAGE_PNG_FILE: "./testdata/files/altlayer.png"
         run: |
           pytest -m regression --alluredir=allure-results --numprocesses=2
 
