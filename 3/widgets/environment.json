@@ -1,0 +1,1 @@
+[{"values":["{'image_png_file': PosixPath('testdata/files/altlayer.png')}"],"name":"test_data"},{"values":["{'url': HttpUrl('http://127.0.0.1:8000/'), 'timeout': 100.0}"],"name":"http_client"},{"values":["allure-results"],"name":"allure_results_dir"}]
