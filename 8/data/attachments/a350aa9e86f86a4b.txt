@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://127.0.0.1:8000/api/v1/courses/' \
+ -H 'host: 127.0.0.1:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTAzLTIwVDIwOjIwOjAzLjUzNzM2MyIsInVzZXJfaWQiOiI4ODcxYTYwNS0yMmJjLTQ1NTctODkzMS05MTBiMzkxYjFiNTMifQ.rb9z47IpIBf9xZlrRJ42sIFj143d5ccOc9TqkiC9EMs' \
+ -H 'content-length: 391' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Lose main tend production simple act.","maxScore":66,"minScore":31,"description":"Recent within everything former seven choose recently. Hand growth accept blue size section.\nCertain including meet as. Economy yourself because yes start computer.","estimatedTime":"9","previewFileId":"c2d09a0b-1155-4aae-96ef-f325a28984fa","createdByUserId":"8871a605-22bc-4557-8931-910b391b1b53"}'
