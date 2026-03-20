@@ -51,6 +51,35 @@ jobs:
           TEST_DATA.IMAGE_PNG_FILE: "./testdata/files/altlayer.png"
         run: |
           pytest -m regression --alluredir=allure-results --numprocesses=2
+       
+
+      - name: Restore Coverage History
+        uses: actions/cache/restore@v5
+        with:
+          path: coverage-history.json
+          key: coverage-history-${{ github.run_id }}
+          restore-keys: |
+            coverage-history-
+
+
+      - name: Generate Coverage Report
+        run: |
+          swagger-coverage-tool save-report
+
+      - name: Cache Coverage History
+        if: always()
+        uses: actions/cache/save@v5
+        with:
+          path: coverage-history.json
+          key: coverage-history-${{ github.run_id }}
+          
+
+      - name: Upload Coverage Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.html
 
       - name: Get Allure history
         uses: actions/checkout@v6

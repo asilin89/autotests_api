@@ -4,7 +4,7 @@ from typing import TypedDict
 from clients.publich_http_builder import get_public_http_client
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
 import allure
-
+from clients.api_coverage import tracker
 from tools.routes import APIRoutes
 
 
@@ -14,6 +14,7 @@ class PublicUsersClient(APIClient):
     Client to work with /api/v1/users endpoint.
     """
     @allure.step("Create new user")
+    @tracker.track_coverage_httpx(APIRoutes.USERS)
     def create_user_api(self, request: CreateUserRequestSchema) -> Response:
 
         """
@@ -23,7 +24,7 @@ class PublicUsersClient(APIClient):
         """
 
         #return self.post("/api/v1/users", json=request.model_dump(by_alias=True))
-        return self.post(APIRoutes.USERS, json=request.model_dump(by_alias=True))
+        return self.post(url=APIRoutes.USERS, json=request.model_dump(by_alias=True))
 
 
     def create_user(self, request: CreateUserRequestSchema) -> CreateUserResponseSchema:

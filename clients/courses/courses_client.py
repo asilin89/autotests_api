@@ -8,7 +8,7 @@ from clients.files.files_client import FileClient
 from clients.private_http_builder import get_private_http_client, AuthUserSchema
 from clients.users.public_users_client import PublicUsersClient
 from pydantic import BaseModel, Field, ConfigDict
-
+from clients.api_coverage import tracker
 from tools.fakers import fake
 import allure
 
@@ -77,6 +77,7 @@ class CoursesClient(APIClient):
     Client for getting all courses.
     """
     @allure.step("Get all courses")
+    @tracker.track_coverage_httpx(APIRoutes.COURSES)
     def get_courses_api(self, query: GetCourseQuerySchema) -> Response:
 
         """
@@ -88,6 +89,7 @@ class CoursesClient(APIClient):
         return self.get(f"{APIRoutes.COURSES}/", params=query.model_dump(by_alias=True))
 
     @allure.step("Get course by id {course_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")
     def get_course_api(self, course_id: str) -> Response:
 
         """
@@ -99,6 +101,7 @@ class CoursesClient(APIClient):
         return self.get(f"{APIRoutes.COURSES}/{course_id}/")
 
     @allure.step("Create new course")
+    @tracker.track_coverage_httpx(APIRoutes.COURSES)
     def create_course_api(self, request: CreateCourseRequestSchema) -> Response:
 
         """
@@ -111,6 +114,7 @@ class CoursesClient(APIClient):
 
 
     @allure.step("Update course by id {course_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")
     def update_course_api(self, course_id: str, request: UpdateCourseRequestSchema) -> Response:
 
         """
@@ -124,6 +128,7 @@ class CoursesClient(APIClient):
 
 
     @allure.step("Delete course by id {course_id}")
+    @tracker.track_coverage_httpx(f"{APIRoutes.COURSES}/{{course_id}}")
     def delete_course_api(self, course_id: str) -> Response:
 
         """
