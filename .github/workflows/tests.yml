@@ -11,6 +11,12 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+    env:
+      HTTP_CLIENT.URL: "http://127.0.0.1:8000"
+      HTTP_CLIENT.TIMEOUT: 100
+      TEST_DATA.IMAGE_PNG_FILE: "./testdata/files/altlayer.png"
+      SWAGGER_COVERAGE_SERVICES: '[{"key": "api-service", "name": "API Service", "tags": ["API", "AUTOTESTS"], "repository": "https://github.com/Nikita-Filonov/qa-automation-engineer-api-course", "swagger_url": "http://localhost:8000/openapi.json"}]'
+      SWAGGER_COVERAGE_HTML_REPORT_FILE: "./coverage.html"
 
     steps:
       - name: Check out repository
@@ -45,12 +51,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run API tests with pytest and generate allure results
-        env:
-          HTTP_CLIENT.URL: "http://127.0.0.1:8000"
-          HTTP_CLIENT.TIMEOUT: 100
-          TEST_DATA.IMAGE_PNG_FILE: "./testdata/files/altlayer.png"
-          SWAGGER_COVERAGE_SERVICES: '[{"key": "api-service", "name": "API Service", "tags": ["API", "AUTOTESTS"], "repository": "https://github.com/Nikita-Filonov/qa-automation-engineer-api-course", "swagger_url": "http://localhost:8000/openapi.json"}]'
-          SWAGGER_COVERAGE_HTML_REPORT_FILE: "./coverage.html"
         run: |
           pytest -m regression --alluredir=allure-results --numprocesses=2
        
