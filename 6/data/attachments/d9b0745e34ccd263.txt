@@ -1,0 +1,22 @@
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/courses/
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 307 Temporary Redirect from http://127.0.0.1:8000/api/v1/courses/
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:26 Make PATCH request to http://127.0.0.1:8000/api/v1/courses/b7bbedef-29fa-4cf9-ad6f-9d8958a5d6cd/
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 307 Temporary Redirect from http://127.0.0.1:8000/api/v1/courses/b7bbedef-29fa-4cf9-ad6f-9d8958a5d6cd/
+INFO     HTTP_LOGGER:event_hooks.py:26 Make PATCH request to http://127.0.0.1:8000/api/v1/courses/b7bbedef-29fa-4cf9-ad6f-9d8958a5d6cd
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/courses/b7bbedef-29fa-4cf9-ad6f-9d8958a5d6cd
+INFO     BASE_ASSERTIONS:base.py:16 Assert that response status code is equal to '200'
+INFO     COURSES_ASSERTIONS:courses.py:23 Assert update course response
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'title' equals to 'Almost floor paper soon certainly off amount.'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'max_score' equals to '70'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'min_score' equals to '33'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'description' equals to 'Even skill hand long. Message manager yourself evidence arm. Various training cover better once next interesting. Prepare operation bit.'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'estimated_time' equals to '3'
+INFO     SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

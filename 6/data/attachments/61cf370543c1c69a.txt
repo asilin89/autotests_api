@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://127.0.0.1:8000/api/v1/courses/' \
+ -H 'host: 127.0.0.1:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTAzLTIwVDE4OjE1OjE3LjQyNDk2NyIsInVzZXJfaWQiOiIxNGU2Nzc5Zi00ZWJlLTQyNmUtOWUyMi0xNjYwZDJhMjI1ODEifQ.IlAYKM3ahJTxU07clBbmHUBtQKuqF5_l1q7RSLehu8U' \
+ -H 'content-length: 370' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Anyone direction minute game task on Congress.","maxScore":94,"minScore":38,"description":"Doctor least one run word lawyer left. Less able each significant the both room. Political resource similar couple crime without under.","estimatedTime":"9","previewFileId":"a0f2656d-4c76-4851-ba27-c8c3e0e3cf27","createdByUserId":"14e6779f-4ebe-426e-9e22-1660d2a22581"}'
