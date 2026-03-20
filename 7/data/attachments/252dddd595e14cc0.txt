@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://127.0.0.1:8000/api/v1/courses/' \
+ -H 'host: 127.0.0.1:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTAzLTIwVDE4OjIyOjQ5LjEwNjA2MiIsInVzZXJfaWQiOiJhMjg3Mjc0ZS02ZTJjLTRhNWUtODQwNy1iZWVhNTVlYzZmMGUifQ.TeFwc3nG_0QlApbyIaBOogIyuJP0iIhAM1Ab6KeIO9I' \
+ -H 'content-length: 403' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Scene as another drop question pull.","maxScore":85,"minScore":26,"description":"Either else several interview. Meet provide trip interview chance conference.\nWish from arm leave according. Property instead line exist sport politics. Then feeling word sign.","estimatedTime":"10","previewFileId":"21084938-1d68-4be7-9aca-808c193f04e2","createdByUserId":"a287274e-6e2c-4a5e-8407-beea55ec6f0e"}'

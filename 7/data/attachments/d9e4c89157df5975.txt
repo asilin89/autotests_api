@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+ 'http://127.0.0.1:8000/api/v1/courses/16077e95-8adc-460e-9341-49f0e36ebd75/' \
+ -H 'host: 127.0.0.1:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTAzLTIwVDE4OjIyOjQ4LjUyMzg4OSIsInVzZXJfaWQiOiI5YjMzOWI3OC1kZmIwLTQ4OTUtYjI0Yi1hN2JmNTg5NzhlOWYifQ.hvjIc9lKhHoCS8PIUPDfraTATdKUheLgYGOXjTtni1A' \
+ -H 'content-length: 264' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Bill themselves subject become.","maxScore":78,"minScore":7,"description":"South visit idea money. Message dream computer measure science lay. Sing drive program.\nTime across drive simply. Reality one wife election southern record.","estimatedTime":"3"}'

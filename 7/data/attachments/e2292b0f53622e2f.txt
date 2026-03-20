@@ -1,0 +1,37 @@
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/users
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/authentication/login
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/files
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/courses/
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 307 Temporary Redirect from http://127.0.0.1:8000/api/v1/courses/
+INFO     HTTP_LOGGER:event_hooks.py:26 Make POST request to http://127.0.0.1:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/courses
+INFO     HTTP_LOGGER:event_hooks.py:26 Make GET request to http://127.0.0.1:8000/api/v1/courses/?userId=a287274e-6e2c-4a5e-8407-beea55ec6f0e
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 307 Temporary Redirect from http://127.0.0.1:8000/api/v1/courses/?userId=a287274e-6e2c-4a5e-8407-beea55ec6f0e
+INFO     HTTP_LOGGER:event_hooks.py:26 Make GET request to http://127.0.0.1:8000/api/v1/courses?userId=a287274e-6e2c-4a5e-8407-beea55ec6f0e
+INFO     HTTP_LOGGER:event_hooks.py:35 Got response 200 OK from http://127.0.0.1:8000/api/v1/courses?userId=a287274e-6e2c-4a5e-8407-beea55ec6f0e
+INFO     BASE_ASSERTIONS:base.py:16 Assert that response status code is equal to '200'
+INFO     COURSES_ASSERTIONS:courses.py:58 Assert get courses response
+INFO     BASE_ASSERTIONS:base.py:58 Assert that 'courses' length is equal to 1
+INFO     COURSES_ASSERTIONS:courses.py:34 Assert course
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'id' equals to '79d50816-c84e-43b1-9a72-ba867f6b7836'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'title' equals to 'Scene as another drop question pull.'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'max_score' equals to '85'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'min_score' equals to '26'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'description' equals to 'Either else several interview. Meet provide trip interview chance conference.
+Wish from arm leave according. Property instead line exist sport politics. Then feeling word sign.'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'estimated_time' equals to '10'
+INFO     FILES_ASSERTIONS:files.py:40 Assert file
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'id' equals to '21084938-1d68-4be7-9aca-808c193f04e2'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'url' equals to 'http://localhost:8000/static/tests/1eee2ac1-fa36-48bf-aaa6-402f3f97db81.png'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'filename' equals to '1eee2ac1-fa36-48bf-aaa6-402f3f97db81.png'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'directory' equals to 'tests'
+INFO     USERS_ASSERTIONS:users.py:33 Assert user
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'id' equals to 'a287274e-6e2c-4a5e-8407-beea55ec6f0e'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'email' equals to 'seansmith@example.org'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'last_name' equals to 'Smith'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'first_name' equals to 'Carmen'
+INFO     BASE_ASSERTIONS:base.py:29 Assert that 'middle_name' equals to 'Yvette'
+INFO     SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

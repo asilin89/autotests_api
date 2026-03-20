@@ -1,0 +1,11 @@
+curl -X 'POST' \
+ 'http://127.0.0.1:8000/api/v1/courses/' \
+ -H 'host: 127.0.0.1:8000' \
+ -H 'accept: */*' \
+ -H 'accept-encoding: gzip, deflate' \
+ -H 'connection: keep-alive' \
+ -H 'user-agent: python-httpx/0.28.1' \
+ -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTAzLTIwVDE4OjIyOjQ4LjUyMzg4OSIsInVzZXJfaWQiOiI5YjMzOWI3OC1kZmIwLTQ4OTUtYjI0Yi1hN2JmNTg5NzhlOWYifQ.hvjIc9lKhHoCS8PIUPDfraTATdKUheLgYGOXjTtni1A' \
+ -H 'content-length: 415' \
+ -H 'content-type: application/json' \
+ -d '{"title":"Important approach goal move same federal car.","maxScore":64,"minScore":31,"description":"Heart big just garden politics as owner. Tough one success six.\nEnd executive speech feel key. Two traditional anything hot. Question scene word as.\nClaim value walk who during.","estimatedTime":"10","previewFileId":"9034d2d5-0d85-4c9b-a3f0-e7724d821970","createdByUserId":"9b339b78-dfb0-4895-b24b-a7bf58978e9f"}'
